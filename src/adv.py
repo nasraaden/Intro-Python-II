@@ -35,6 +35,20 @@ room['narrow'].w_to = room['foyer']
 room['narrow'].n_to = room['treasure']
 room['treasure'].s_to = room['narrow']
 
+items = {
+    'swing': Item('swing', 'a suspended seat for playing or lounging'),
+    'mirror': Item('mirror', 'to check yourself out'),
+    'table': Item('table', 'furniture piece to set things on'),
+    'lamp': Item('lamp', 'something to light the way'),
+    'chest': Item('chest', 'something to hold treasure in')
+}
+
+room['outside'].add_item(items['swing'])
+room['foyer'].add_item(items['mirror'])
+room['foyer'].add_item(items['table'])
+room['narrow'].add_item(items['lamp'])
+room['treasure'].add_item(items['chest'])
+
 #
 # Main
 #
@@ -61,7 +75,8 @@ player1 = Player('player1', room['outside'])
 
 
 while True:
-    command = input('Enter a direction (n, s, e, w) to go: ')
+    command = input(
+        'Enter a direction (n, s, e, w) to go different rooms, q to quit, i to see items, g to get items, or d to drop items : ')
     if command == 'n':
         if player1.current_room.n_to != None:
             player1.current_room = player1.current_room.n_to
@@ -90,5 +105,11 @@ while True:
                 f'room: {player1.current_room.name} \n description: {player1.current_room.description}')
         else:
             print('You cannot move west from this room.')
+    elif command == 'i':
+        if len(player1.current_room.items) > 0:
+            for i in player1.current_room.items:
+                print(f'name: {i.name} \n description: {i.description}')
+    # elif command == 'g':
+
     elif command == 'q':
         quit()

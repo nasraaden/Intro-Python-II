@@ -1,12 +1,18 @@
 # Write a class to hold player information, e.g. what room they are in
 # currently.
 
+from room import Room
+
 
 class Player:
-    def __init__(self, name, current_room):
+    def __init__(self, name, current_room, items=None):
         self.name = name
         self.current_room = current_room
-    # moving directions
+        self.items = [] if items is None else items
 
-    def move(self, directions):
-        self.directions = ('n', 's', 'e', 'w')
+    def print_items(self):
+        if len(self.current_room.items) > 0:
+            for i in self.items:
+                print(i)
+        else:
+            print('No items in the current room.')
