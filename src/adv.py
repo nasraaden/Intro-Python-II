@@ -61,34 +61,34 @@ player1 = Player('player1', room['outside'])
 
 
 while True:
-    # print(
-    #     f'room: {player1.current_room.name} \n description: {player1.current_room.description}')
     command = input('Enter a direction (n, s, e, w) to go: ')
     if command == 'n':
         if player1.current_room.n_to != None:
             player1.current_room = player1.current_room.n_to
             print(
-                f'room: {player1.current_room.name}')
+                f'room: {player1.current_room.name} \n description: {player1.current_room.description}')
         else:
             print('You cannot move north from this room.')
     elif command == 's':
         if player1.current_room.s_to != None:
             player1.current_room = player1.current_room.s_to
             print(
-                f'room: {player1.current_room.name}')
+                f'room: {player1.current_room.name} \n description: {player1.current_room.description}')
         else:
             print('You cannot move south from this room.')
     elif command == 'e':
         if player1.current_room.e_to != None:
             player1.current_room = player1.current_room.e_to
             print(
-                f'room: {player1.current_room.name}')
+                f'room: {player1.current_room.name} \n description: {player1.current_room.description}')
         else:
             print('You cannot move east from this room.')
     elif command == 'w':
         if player1.current_room.w_to != None:
             player1.current_room = player1.current_room.w_to
             print(
-                f'room: {player1.current_room.name}')
+                f'room: {player1.current_room.name} \n description: {player1.current_room.description}')
         else:
             print('You cannot move west from this room.')
+    elif command == 'q':
+        quit()
